@@ -1,12 +1,17 @@
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 
 export const Navbar = () => {
 
-    const location = useLocation()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        navigate('/login')
+        console.log('Cerro sesion');
+    }
     
     return (
-        <nav as='nav' className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
+        <nav as='nav' className="navbar w-100 navbar-expand-sm navbar-dark bg-dark p-2">
             
             <Link 
                 className="navbar-brand" 
@@ -31,6 +36,12 @@ export const Navbar = () => {
                     >
                         DC
                     </NavLink>
+                    <NavLink 
+                        className={`nav-item nav-link`} 
+                        to="/search"
+                    >
+                        Search
+                    </NavLink>
 
                 </div>
             </div>
@@ -42,6 +53,7 @@ export const Navbar = () => {
 
                     <button
                         className='nav-item nav-link btn'
+                        onClick={handleLogout}
                     >
                         Logout
                     </button>
