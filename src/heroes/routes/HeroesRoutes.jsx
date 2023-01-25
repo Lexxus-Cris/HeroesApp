@@ -14,7 +14,8 @@ export const HeroesRoutes = () => {
 
                     {/* Search, Hero by id */}
                     <Route path='search' element={<SearchPage />} />
-                    <Route path='hero' element={<HeroPage />} />
+                    {/* Se agrega el param a nuestra url */}
+                    <Route path='hero/:heroId' element={<HeroPage />} />
 
                     {/* Redireccionamiento si se encuentra en / */}
                     <Route path='/' element={<Navigate to='/marvel' />} />

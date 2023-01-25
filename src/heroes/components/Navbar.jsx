@@ -6,8 +6,9 @@ export const Navbar = () => {
     const navigate = useNavigate()
 
     const handleLogout = () => {
-        navigate('/login')
-        console.log('Cerro sesion');
+        navigate('/login',{
+            replace: true,
+        })
     }
     
     return (
