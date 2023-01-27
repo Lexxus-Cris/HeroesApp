@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
@@ -17,7 +17,9 @@ export const LoginPage = () => {
 
   const { email, password, onInputChange } = useForm({ email: '', password: '' })
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+
+    e.preventDefault()
 
     if (email !== user.email || password !== user.password) return;
 
@@ -34,7 +36,7 @@ export const LoginPage = () => {
       <h1>Login</h1>
       <hr />
 
-      <form className="col-6">
+      <form onSubmit={handleLogin} className="col-6">
         <input
           className="form-control mt-4"
           type="text"
@@ -53,9 +55,7 @@ export const LoginPage = () => {
           placeholder="Password"
           value={password}
         />
-        <button className="btn btn-primary mt-2"
-          onClick={handleLogin}
-        >
+        <button className="btn btn-primary mt-2">
           Login
         </button>
       </form>

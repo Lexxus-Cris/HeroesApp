@@ -9,7 +9,7 @@ const initialState = {
 }
 
 const init = () => {
-    const user = Json.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem('user'));
 
     return {
         logged: !!user,
@@ -33,8 +33,16 @@ export const AuthProvider = ({ children }) => {
         dispatch(action)
     }
 
+    const logout = () => {
+        localStorage.removeItem('user');
+        const action = {
+            type: types.logout,
+        }
+        dispatch(action)
+    }
+
     return (
-        <AuthContext.Provider value={{ authState, login: login}}>
+        <AuthContext.Provider value={{ authState, login: login, logout: logout }} >
             {children}
         </AuthContext.Provider>
     )

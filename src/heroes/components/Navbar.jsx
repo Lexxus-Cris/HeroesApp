@@ -7,17 +7,16 @@ export const Navbar = () => {
 
     const navigate = useNavigate()
 
-    const { authState } = useContext(AuthContext)
+    const { authState, logout } = useContext(AuthContext)
 
     const { user } = authState
 
     const handleLogout = () => {
+        logout();
         navigate('/login',{
             replace: true,
         })
     }
-
-    console.log(authState);
     
     return (
         <nav as='nav' className="navbar w-100 navbar-expand-sm navbar-dark bg-dark p-2">
